@@ -9,7 +9,7 @@ The original code for the SHRED models was developed by Jan P. Williams, Olivia 
 
 ## Sec. II. Theoretical Background
 
-This model is a form of Long Short-Term Memory (LSTM) network, which is a type of recursive neural network. In other words, some of the layers of the neural net provide "feedback" to previous layers to improve the performance of the network.
+This model is a form of Long Short-Term Memory (LSTM) network, which is a type of recursive neural network. In other words, some of the layers of the neural net provide "feedback" to previous layers to improve the performance of the network. This particular network uses an input layer, an output layer, and two hidden layers.
 
 ## Sec. III. Algorithm Implementation and Development
 ## Sec. IV. Computational Results
