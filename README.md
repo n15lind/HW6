@@ -70,7 +70,7 @@ I first implemented the code as-is to see how it performed and plot the results.
 
 ## Sec. IV. Computational Results
 
-
+The validation error for the baseline test is shown below in Figure 1. The overall error for this test was 0.02
 
 ## Sec. V. Summary and Conclusions
 
