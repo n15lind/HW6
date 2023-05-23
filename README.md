@@ -66,6 +66,7 @@ test_recons = sc.inverse_transform(shred(test_dataset.X).detach().cpu().numpy())
 test_ground_truth = sc.inverse_transform(test_dataset.Y.detach().cpu().numpy())
 print(np.linalg.norm(test_recons - test_ground_truth) / np.linalg.norm(test_ground_truth))
 ```
+I first implemented the code as-is to see how it performed and plot the results. I then modified it to train with 5 different numbers of lags (26, 32, 39, 44, and 52) and compared their performances. I then went back to the default lag value of 52 and added varying levels of Gaussian noise (std = 0, 0.05, 0.1, 0.15, and 0.2) to see how that affected the performance of the model. Finally, I removed the noise and tried different numbers of sensors (1, 2, 3, 4, and 5).
 
 ## Sec. IV. Computational Results
 
