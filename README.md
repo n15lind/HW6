@@ -70,7 +70,11 @@ I first implemented the code as-is to see how it performed and plot the results.
 
 ## Sec. IV. Computational Results
 
-The validation error for the baseline test is shown below in Figure 1. The overall error for this test was 0.02
+The validation error for the baseline test is shown below in Figure 1. Note that the x-axis is from 0 to 50 because samples were taken every 20 epochs (1/50 of the entire set of 1000 epochs).
+
+![Baseline](https://github.com/n15lind/HW6/assets/130141391/ee7f665f-7b76-413d-acd8-f5e4aaeffc4d)
+
+_Figure 1: Validation error for baseline test_
 
 ## Sec. V. Summary and Conclusions
 
