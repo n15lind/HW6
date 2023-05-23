@@ -70,11 +70,41 @@ I first implemented the code as-is to see how it performed and plot the results.
 
 ## Sec. IV. Computational Results
 
-The validation error for the baseline test is shown below in Figure 1. Note that the x-axis is from 0 to 50 because samples were taken every 20 epochs (1/50 of the entire set of 1000 epochs).
+The validation error over the training epochs for the baseline test is shown below in Figure 1. Note that the x-axis is from 0 to 50 because samples were taken every 20 epochs (1/50 of the entire set of 1000 epochs). The overall error compared to the ground truth was 0.020010263.
 
 ![Baseline](https://github.com/n15lind/HW6/assets/130141391/ee7f665f-7b76-413d-acd8-f5e4aaeffc4d)
 
-_Figure 1: Validation error for baseline test_
+_Figure 1: Validation error vs epochs for baseline test_
+
+Figure 2 shows the validation error over the training epochs for various numbers of lags. Note that the x-axis is from 0 to 50 because samples were taken every 20 epochs (1/50 of the entire set of 1000 epochs). Figure 3 shows the errors for the different lag values compared to the ground truth.
+
+![Lags Epochs](https://github.com/n15lind/HW6/assets/130141391/b6f1a309-3cf4-47cd-8f15-bb9e24a3c6d1)
+
+_Figure 2: Validation error vs epochs for different numbers of lags_
+
+![Lags Errors](https://github.com/n15lind/HW6/assets/130141391/42cceb29-0290-4ff6-8433-14f49ded5a4d)
+
+_Figure 3: Error vs number of lags_
+
+Figure 4 shows the validation error over the training epochs for various amounts of noise. The "noise level" is the standard deviation of the Gaussian noise. Note that the x-axis is from 0 to 50 because samples were taken every 20 epochs (1/50 of the entire set of 1000 epochs). Figure 5 shows the errors for the different lag values compared to the ground truth.
+
+![Noise Epochs](https://github.com/n15lind/HW6/assets/130141391/798c839a-1ee1-4bc6-ad02-a08a1041e471)
+
+_Figure 4: Validation error vs epochs for different standard deviations of Gaussian noise_
+
+![Noise Error](https://github.com/n15lind/HW6/assets/130141391/65897c38-fc1a-4f56-b6ca-383f6a787ca5)
+
+_Figure 5: Error vs standard deviation of Gaussian noise_
+
+Figure 6 shows the validation error over the training epochs for various amounts of noise. The "noise level" is the standard deviation of the Gaussian noise. Note that the x-axis is from 0 to 50 because samples were taken every 20 epochs (1/50 of the entire set of 1000 epochs). Figure 7 shows the errors for the different lag values compared to the ground truth.
+
+![Sensors Epochs](https://github.com/n15lind/HW6/assets/130141391/923c1694-d3bc-49f5-a584-1ec1454d3539)
+
+_Figure 6: Validation error vs epochs for different numbers of sensors_
+
+![Sensors Error](https://github.com/n15lind/HW6/assets/130141391/64f9aec0-68cb-40a4-891f-76959b6b1ec1)
+
+_Figure 7: Error vs number of sensors used_
 
 ## Sec. V. Summary and Conclusions
 
