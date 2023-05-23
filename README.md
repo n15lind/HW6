@@ -88,11 +88,11 @@ _Figure 3: Error vs number of lags_
 
 Figure 4 shows the validation error over the training epochs for various amounts of noise. The "noise level" is the standard deviation of the Gaussian noise. Note that the x-axis is from 0 to 50 because samples were taken every 20 epochs (1/50 of the entire set of 1000 epochs). Figure 5 shows the errors for the different noise levels compared to the ground truth.
 
-![Noise Epochs](https://github.com/n15lind/HW6/assets/130141391/798c839a-1ee1-4bc6-ad02-a08a1041e471)
+![Noise Epochs](https://github.com/n15lind/HW6/assets/130141391/4614ff42-8ae5-4922-9937-95b7c00ee4b8)
 
 _Figure 4: Validation error vs epochs for different standard deviations of Gaussian noise_
 
-![Noise Error](https://github.com/n15lind/HW6/assets/130141391/65897c38-fc1a-4f56-b6ca-383f6a787ca5)
+![Noise Error](https://github.com/n15lind/HW6/assets/130141391/040f430c-a913-43e4-9d62-08820a69c971)
 
 _Figure 5: Error vs standard deviation of Gaussian noise_
 
@@ -108,3 +108,10 @@ _Figure 7: Error vs number of sensors used_
 
 ## Sec. V. Summary and Conclusions
 
+Changing the number of lags seemed to have a small impact on the performance of the model. The plots of the validation errors for each of the different numbers of lags are all very similar, and the errors compared to ground truth range from 0.0197 to 0.0205. Considering the baseline for this error was 0.020010263, the small differences in error values indicate that the model is not particularly sensitive to the number of lags used.
+
+Noise, on the other hand, made a large difference in the performance of the model. The validation plots are drastically different for different levels of noise, and the errors compared to ground truth go from 0.020 to 0.033. This is by far the larges range of error for any of the parameters I tested.
+
+The number of sensors used had a similar effect on performance to the number of lags. The plots of the validation for this test errors are noticeably different, but all appear converge to the same amount after 400-600 epochs. The errors compared to ground truth range from around 0.0199 to 0.0206. This range is smaller than the range for the number of lags, but on the high end it is farther away from the baseline of 0.020010263.
+
+Overall, noise had the largest effect on performance, followed by the number of lags and finally the number of sensors.
