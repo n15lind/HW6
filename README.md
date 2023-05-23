@@ -22,7 +22,7 @@ n = load_X.shape[0]
 m = load_X.shape[1]
 sensor_locations = np.random.choice(m, size=num_sensors, replace=False)
 ```
-Second, I divided the data into different sets for training, validation, and testing
+Second, I divided the data into different sets for training, validation, and testing.
 ```
 train_indices = np.random.choice(n - lags, size=1000, replace=False)
 mask = np.ones(n - lags)
@@ -31,7 +31,41 @@ valid_test_indices = np.arange(0, n - lags)[np.where(mask!=0)[0]]
 valid_indices = valid_test_indices[::2]
 test_indices = valid_test_indices[1::2]
 ```
+I then prepared the data and generated input/output pairs for the data sets.
+```
+sc = MinMaxScaler()
+sc = sc.fit(load_X[train_indices])
+transformed_X = sc.transform(load_X)
 
+all_data_in = np.zeros((n - lags, lags, num_sensors))
+for i in range(len(all_data_in)):
+    all_data_in[i] = transformed_X[i:i+lags, sensor_locations]
+```
+I then converted the data sets to torch tensors and modified them to get them ready for training.
+```
+train_data_in = torch.tensor(all_data_in[train_indices], dtype=torch.float32).to(device)
+valid_data_in = torch.tensor(all_data_in[valid_indices], dtype=torch.float32).to(device)
+test_data_in = torch.tensor(all_data_in[test_indices], dtype=torch.float32).to(device)
+
+train_data_out = torch.tensor(transformed_X[train_indices + lags - 1], dtype=torch.float32).to(device)
+valid_data_out = torch.tensor(transformed_X[valid_indices + lags - 1], dtype=torch.float32).to(device)
+test_data_out = torch.tensor(transformed_X[test_indices + lags - 1], dtype=torch.float32).to(device)
+
+train_dataset = TimeSeriesDataset(train_data_in, train_data_out)
+valid_dataset = TimeSeriesDataset(valid_data_in, valid_data_out)
+test_dataset = TimeSeriesDataset(test_data_in, test_data_out)
+```
+After that, I trained the model over 1000 epochs
+```
+shred = models.SHRED(num_sensors, m, hidden_size=64, hidden_layers=2, l1=350, l2=400, dropout=0.1).to(device)
+validation_errors = models.fit(shred, train_dataset, valid_dataset, batch_size=64, num_epochs=1000, lr=1e-3, verbose=True, patience=5)
+```
+Finally, I tested the model and calculated error by comparing the MSE to the ground truth.
+```
+test_recons = sc.inverse_transform(shred(test_dataset.X).detach().cpu().numpy())
+test_ground_truth = sc.inverse_transform(test_dataset.Y.detach().cpu().numpy())
+print(np.linalg.norm(test_recons - test_ground_truth) / np.linalg.norm(test_ground_truth))
+```
 
 ## Sec. IV. Computational Results
 
